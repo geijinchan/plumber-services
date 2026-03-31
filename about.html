@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About Us — AquaFix Plumbing</title>
+<meta name="description" content="Learn about AquaFix — Ludhiana's trusted plumbing company since 2012. Meet our team of certified professionals."/>
+<link rel="stylesheet" href="css/style.css"/>
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+<style>
+.about-story { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.about-img { background: linear-gradient(135deg,#dbeafe,#bfdbfe); border-radius: var(--radius); height: 400px; display: flex; align-items: center; justify-content: center; font-size: 80px; }
+.about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+.about-stat { background: var(--bg); border-radius: var(--radius-sm); padding: 20px; }
+.about-stat-num { font-family: 'DM Serif Display', serif; font-size: 32px; color: var(--blue); }
+.about-stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+#team { background: var(--bg); }
+.team-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; margin-top: 48px; }
+.team-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: all .25s; }
+.team-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(26,86,219,0.10); }
+.team-photo { height: 180px; display: flex; align-items: center; justify-content: center; font-size: 60px; background: linear-gradient(135deg,#dbeafe,#bfdbfe); }
+.team-info { padding: 20px; }
+.team-name { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.team-role { font-size: 13px; color: var(--blue); font-weight: 600; margin-bottom: 8px; }
+.team-bio { font-size: 13px; color: var(--muted); line-height: 1.5; }
+.values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px; }
+.value-card { padding: 32px 28px; background: #fff; border: 1px solid var(--border); border-radius: var(--radius); }
+.value-icon { font-size: 36px; margin-bottom: 16px; }
+.value-title { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+.value-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+.cert-strip { background: var(--blue); padding: 40px 5%; }
+.cert-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.cert-item { display: flex; align-items: center; gap: 12px; color: #fff; }
+.cert-icon { font-size: 28px; }
+.cert-text { font-size: 14px; font-weight: 600; }
+@media(max-width:900px){.about-story{grid-template-columns:1fr;}.team-grid{grid-template-columns:repeat(2,1fr);}.values-grid{grid-template-columns:1fr;}}
+@media(max-width:600px){.team-grid{grid-template-columns:1fr;}.cert-inner{flex-direction:column;align-items:flex-start;}.about-stats{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="section-tag">Our Story</div>
+  <h1>Ludhiana's Most<br><em style="color:var(--blue);font-style:italic;">Trusted Plumbers</em></h1>
+  <p>Over a decade of quality workmanship, honest service, and happy customers across Punjab.</p>
+</div>
+
+<section>
+  <div class="section-inner">
+    <div class="about-story">
+      <div class="about-img fade-in">🔧</div>
+      <div class="fade-in" style="transition-delay:.1s;">
+        <div class="section-tag">Est. 2012</div>
+        <h2 class="section-title">Built on Trust,<br>Powered by Expertise</h2>
+        <p style="color:var(--muted);line-height:1.8;font-size:15px;margin-bottom:16px;">AquaFix was founded by Gurpreet Singh, a master plumber with 20+ years of field experience. Frustrated by the unprofessional and overpriced plumbing market in Ludhiana, he set out to build a company that genuinely cares about customers.</p>
+        <p style="color:var(--muted);line-height:1.8;font-size:15px;">Today, our team of 18 certified plumbers serves over 500 homes and businesses every month across Ludhiana and surrounding areas — with the same dedication that started it all.</p>
+        <div class="about-stats">
+          <div class="about-stat"><div class="about-stat-num">12+</div><div class="about-stat-label">Years in Business</div></div>
+          <div class="about-stat"><div class="about-stat-num">5,000+</div><div class="about-stat-label">Jobs Completed</div></div>
+          <div class="about-stat"><div class="about-stat-num">18</div><div class="about-stat-label">Certified Plumbers</div></div>
+          <div class="about-stat"><div class="about-stat-num">4.9★</div><div class="about-stat-label">Average Rating</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cert-strip">
+  <div class="cert-inner">
+    <div class="cert-item fade-in"><div class="cert-icon">🏅</div><div class="cert-text">ITI Certified Plumbers</div></div>
+    <div class="cert-item fade-in"><div class="cert-icon">🛡️</div><div class="cert-text">Fully Insured</div></div>
+    <div class="cert-item fade-in"><div class="cert-icon">✅</div><div class="cert-text">Background Verified Staff</div></div>
+    <div class="cert-item fade-in"><div class="cert-icon">🏆</div><div class="cert-text">Best Plumber — Ludhiana 2023</div></div>
+    <div class="cert-item fade-in"><div class="cert-icon">📋</div><div class="cert-text">Licensed by Punjab Municipal</div></div>
+  </div>
+</div>
+
+<section id="team">
+  <div class="section-inner">
+    <div class="fade-in" style="text-align:center;">
+      <div class="section-tag">The Team</div>
+      <h2 class="section-title">Meet Our Experts</h2>
+      <p class="section-sub" style="margin:0 auto;">Every plumber on our team is certified, trained, and background-verified.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card fade-in"><div class="team-photo">👨‍🔧</div><div class="team-info"><div class="team-name">Gurpreet Singh</div><div class="team-role">Founder &amp; Master Plumber</div><div class="team-bio">20+ years of experience. Expert in complex installations and emergency repairs.</div></div></div>
+      <div class="team-card fade-in" style="transition-delay:.1s;"><div class="team-photo">👩‍💼</div><div class="team-info"><div class="team-name">Simran Kaur</div><div class="team-role">Operations Manager</div><div class="team-bio">Manages bookings, scheduling, and ensures every customer is delighted.</div></div></div>
+      <div class="team-card fade-in" style="transition-delay:.2s;"><div class="team-photo">👨‍🔧</div><div class="team-info"><div class="team-name">Harbhajan Mehta</div><div class="team-role">Senior Plumber</div><div class="team-bio">Specialist in bathroom installations and pipe replacement. 12 years experience.</div></div></div>
+      <div class="team-card fade-in" style="transition-delay:.3s;"><div class="team-photo">👨‍🔧</div><div class="team-info"><div class="team-name">Arjun Sharma</div><div class="team-role">Emergency Technician</div><div class="team-bio">On-call 24/7. Fastest response times on the team. Expert in burst pipes.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-inner">
+    <div class="fade-in" style="text-align:center;">
+      <div class="section-tag">Our Values</div>
+      <h2 class="section-title">What We Stand For</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card fade-in"><div class="value-icon">🤝</div><div class="value-title">Honest &amp; Transparent</div><div class="value-desc">We give you an upfront quote before starting any work. No hidden charges, no surprise bills. What we quote is what you pay.</div></div>
+      <div class="value-card fade-in" style="transition-delay:.1s;"><div class="value-icon">⭐</div><div class="value-title">Quality First</div><div class="value-desc">We use only quality-approved materials and tools. Every job comes with a 30-day workmanship guarantee — if it fails, we fix it free.</div></div>
+      <div class="value-card fade-in" style="transition-delay:.2s;"><div class="value-icon">⏰</div><div class="value-title">Always On Time</div><div class="value-desc">We respect your time. Our plumbers arrive in the agreed window, every time. If we're late, we'll make it right.</div></div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

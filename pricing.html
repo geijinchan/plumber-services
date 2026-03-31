@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pricing — AquaFix Plumbing</title>
+<meta name="description" content="Transparent, upfront plumbing pricing in Ludhiana. No hidden charges. See all our service rates."/>
+<link rel="stylesheet" href="css/style.css"/>
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+<style>
+.pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 52px; }
+.price-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 36px 28px; position: relative; transition: all .25s; }
+.price-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(26,86,219,0.10); }
+.price-card.featured { border: 2px solid var(--blue); }
+.price-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--blue); color: #fff; font-size: 12px; font-weight: 700; padding: 4px 16px; border-radius: 20px; white-space: nowrap; }
+.price-name { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 8px; }
+.price-amount { font-family: 'DM Serif Display', serif; font-size: 42px; color: var(--text); margin-bottom: 4px; }
+.price-amount span { font-size: 18px; font-family: 'DM Sans', sans-serif; color: var(--muted); }
+.price-period { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+.price-divider { height: 1px; background: var(--border); margin-bottom: 24px; }
+.price-features { list-style: none; margin-bottom: 28px; }
+.price-features li { font-size: 14px; color: var(--muted); padding: 7px 0; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border); }
+.price-features li:last-child { border-bottom: none; }
+.check { color: var(--green); font-weight: 700; font-size: 15px; }
+.cross { color: #94a3b8; }
+.price-cta { width: 100%; padding: 13px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 700; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all .2s; }
+.price-cta.primary { background: var(--blue); color: #fff; border: none; }
+.price-cta.primary:hover { background: var(--blue-dark); }
+.price-cta.secondary { background: #fff; color: var(--blue); border: 1.5px solid var(--blue); }
+.price-cta.secondary:hover { background: var(--blue-light); }
+
+.rates-table-wrap { margin-top: 52px; background: #fff; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.rates-table { width: 100%; border-collapse: collapse; }
+.rates-table th { background: var(--bg); padding: 14px 20px; font-size: 13px; font-weight: 700; text-align: left; color: var(--muted); letter-spacing: 0.5px; text-transform: uppercase; border-bottom: 1px solid var(--border); }
+.rates-table td { padding: 14px 20px; font-size: 14px; border-bottom: 1px solid var(--border); }
+.rates-table tr:last-child td { border-bottom: none; }
+.rates-table tr:hover td { background: var(--bg); }
+.rate-service { font-weight: 600; color: var(--text); }
+.rate-price { font-weight: 700; color: var(--blue); }
+.rate-time { color: var(--muted); }
+.faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 12px; }
+.faq-item { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
+.faq-q { padding: 18px 20px; font-size: 15px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.faq-a { padding: 0 20px 18px; font-size: 14px; color: var(--muted); line-height: 1.7; }
+@media(max-width:900px){.pricing-grid{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto;}}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="section-tag">Transparent Pricing</div>
+  <h1>Clear Pricing,<br><em style="color:var(--blue);font-style:italic;">No Surprises</em></h1>
+  <p>Upfront quotes before any work starts. Pay only when you're satisfied. No hidden charges — ever.</p>
+</div>
+
+<section>
+  <div class="section-inner">
+    <div class="fade-in" style="text-align:center;">
+      <div class="section-tag">Service Packages</div>
+      <h2 class="section-title">Choose Your Plan</h2>
+      <p class="section-sub" style="margin:0 auto;">Flexible options for homeowners, businesses, and those who need regular maintenance.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card fade-in">
+        <div class="price-name">Basic</div>
+        <div class="price-amount">₹499 <span>onwards</span></div>
+        <div class="price-period">Per job · No contract</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li><span class="check">✓</span> Single repair visit</li>
+          <li><span class="check">✓</span> Upfront quote</li>
+          <li><span class="check">✓</span> 30-day guarantee</li>
+          <li><span class="check">✓</span> WhatsApp updates</li>
+          <li><span class="cross">—</span> Priority scheduling</li>
+          <li><span class="cross">—</span> Annual inspection</li>
+        </ul>
+        <button class="price-cta secondary" onclick="window.location.href='booking.html'">Book Now</button>
+      </div>
+
+      <div class="price-card featured fade-in" style="transition-delay:.1s;">
+        <div class="price-badge">Most Popular</div>
+        <div class="price-name">Home Care</div>
+        <div class="price-amount">₹1,499 <span>/month</span></div>
+        <div class="price-period">Annual contract · 12 months</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li><span class="check">✓</span> Unlimited repair visits</li>
+          <li><span class="check">✓</span> Priority scheduling</li>
+          <li><span class="check">✓</span> Annual full inspection</li>
+          <li><span class="check">✓</span> Free drain cleaning (×2/yr)</li>
+          <li><span class="check">✓</span> 20% off parts</li>
+          <li><span class="check">✓</span> Dedicated technician</li>
+        </ul>
+        <button class="price-cta primary" onclick="window.location.href='booking.html'">Get Started</button>
+      </div>
+
+      <div class="price-card fade-in" style="transition-delay:.2s;">
+        <div class="price-name">Commercial</div>
+        <div class="price-amount">Custom</div>
+        <div class="price-period">Tailored for businesses</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li><span class="check">✓</span> Multi-site coverage</li>
+          <li><span class="check">✓</span> Dedicated account manager</li>
+          <li><span class="check">✓</span> SLA guarantees</li>
+          <li><span class="check">✓</span> Quarterly reports</li>
+          <li><span class="check">✓</span> GST invoice</li>
+          <li><span class="check">✓</span> 24/7 priority line</li>
+        </ul>
+        <button class="price-cta secondary" onclick="window.location.href='contact.html'">Contact Us</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg);">
+  <div class="section-inner">
+    <div class="fade-in">
+      <div class="section-tag">Service Rates</div>
+      <h2 class="section-title">Common Service Prices</h2>
+      <p class="section-sub">Starting prices — final quote given on-site after inspection.</p>
+    </div>
+    <div class="rates-table-wrap fade-in">
+      <table class="rates-table">
+        <thead><tr><th>Service</th><th>Starting Price</th><th>Typical Duration</th></tr></thead>
+        <tbody>
+          <tr><td class="rate-service">Tap/Faucet Repair</td><td class="rate-price">₹299</td><td class="rate-time">30–60 min</td></tr>
+          <tr><td class="rate-service">Leak Detection</td><td class="rate-price">₹499</td><td class="rate-time">1–2 hours</td></tr>
+          <tr><td class="rate-service">Pipe Repair (minor)</td><td class="rate-price">₹599</td><td class="rate-time">1–3 hours</td></tr>
+          <tr><td class="rate-service">Drain Cleaning</td><td class="rate-price">₹699</td><td class="rate-time">1–2 hours</td></tr>
+          <tr><td class="rate-service">Toilet Fitting</td><td class="rate-price">₹999</td><td class="rate-time">2–3 hours</td></tr>
+          <tr><td class="rate-service">Water Tank Cleaning (500L)</td><td class="rate-price">₹1,199</td><td class="rate-time">3–4 hours</td></tr>
+          <tr><td class="rate-service">Bathroom Installation (full)</td><td class="rate-price">₹7,999</td><td class="rate-time">1–2 days</td></tr>
+          <tr><td class="rate-service">Emergency Call-Out (24/7)</td><td class="rate-price">₹799</td><td class="rate-time">Within 60 min</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-inner">
+    <div class="fade-in"><div class="section-tag">FAQ</div><h2 class="section-title">Pricing Questions</h2></div>
+    <div class="faq-list">
+      <div class="faq-item fade-in"><div class="faq-q">Do you charge for the initial visit? <span>+</span></div><div class="faq-a">No. Our plumber will assess the problem and give you a free quote. You only pay if you approve the work.</div></div>
+      <div class="faq-item fade-in" style="transition-delay:.1s;"><div class="faq-q">Are there extra charges for evenings or weekends? <span>+</span></div><div class="faq-a">Standard rates apply Monday–Saturday. Sunday visits carry a small surcharge of ₹150. Emergency (24/7) has a flat call-out fee of ₹799 regardless of time.</div></div>
+      <div class="faq-item fade-in" style="transition-delay:.2s;"><div class="faq-q">What payment methods do you accept? <span>+</span></div><div class="faq-a">We accept UPI (PhonePe, Google Pay, Paytm), cash, and all major debit/credit cards. GST invoice available on request.</div></div>
+      <div class="faq-item fade-in" style="transition-delay:.3s;"><div class="faq-q">Do you offer a guarantee on your work? <span>+</span></div><div class="faq-a">Yes. All labour is guaranteed for 30 days. If the same issue recurs within that period, we return and fix it at no charge. Parts carry the manufacturer's warranty.</div></div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

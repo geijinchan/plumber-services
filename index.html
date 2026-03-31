@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AquaFix — Professional Plumbing Services in Ludhiana</title>
+<meta name="description" content="Fast & reliable plumbing services in Ludhiana. Leak repair, bathroom fitting, emergency plumbing 24/7. Book online now."/>
+<link rel="stylesheet" href="css/style.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+<style>
+/* ─── HERO ─── */
+#hero { min-height: 100vh; background: linear-gradient(135deg,#f0f5ff 0%,#e8f0fe 50%,#f0f8ff 100%); padding-top: 68px; display: flex; align-items: center; position: relative; overflow: hidden; }
+.hero-inner { max-width: 1200px; margin: 0 auto; padding: 60px 5%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; width: 100%; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: #fff; border: 1px solid var(--border); color: var(--blue); font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 20px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(26,86,219,0.08); }
+.hero-badge-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.6;transform:scale(1.3);} }
+#hero h1 { font-family: 'DM Serif Display', serif; font-size: 52px; line-height: 1.05; margin-bottom: 18px; letter-spacing: -1px; }
+#hero h1 em { color: var(--blue); font-style: italic; display: block; }
+.hero-sub { font-size: 16px; color: var(--muted); line-height: 1.7; margin-bottom: 32px; max-width: 440px; }
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+.hero-stats { display: flex; gap: 32px; }
+.hero-stat-num { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--blue); }
+.hero-stat-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.hero-3d-wrap { position: relative; height: 480px; display: flex; align-items: center; justify-content: center; }
+#hero-canvas { border-radius: var(--radius); width: 100% !important; height: 100% !important; }
+.hero-card-float { position: absolute; bottom: 24px; left: 0; background: #fff; border-radius: var(--radius); padding: 14px 18px; box-shadow: 0 8px 32px rgba(26,86,219,0.14); border: 1px solid var(--border); min-width: 180px; }
+.cf-label { font-size: 11px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+.cf-val { font-size: 18px; font-weight: 700; color: var(--text); }
+.stars { color: var(--accent); font-size: 14px; margin-top: 4px; }
+
+/* ─── SERVICES PREVIEW ─── */
+#services-preview { background: #fff; }
+.services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.svc-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 24px; transition: all .25s; position: relative; overflow: hidden; }
+.svc-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--blue); transform: scaleX(0); transition: transform .3s; }
+.svc-card:hover { border-color: var(--blue); box-shadow: 0 8px 32px rgba(26,86,219,0.12); transform: translateY(-4px); }
+.svc-card:hover::before { transform: scaleX(1); }
+.svc-icon-wrap { width: 52px; height: 52px; background: var(--blue-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 18px; }
+.svc-title { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+.svc-desc { font-size: 14px; color: var(--muted); line-height: 1.6; }
+.svc-link { display: inline-flex; align-items: center; gap: 4px; margin-top: 14px; font-size: 13px; font-weight: 600; color: var(--blue); text-decoration: none; }
+.svc-emergency { background: linear-gradient(135deg,#1a56db,#3b7bff); color: #fff; border-color: transparent; }
+.svc-emergency .svc-icon-wrap { background: rgba(255,255,255,0.2); }
+.svc-emergency .svc-title,.svc-emergency .svc-link { color: #fff; }
+.svc-emergency .svc-desc { color: rgba(255,255,255,0.85); }
+.svc-emergency::before { display: none; }
+
+/* ─── HOW IT WORKS ─── */
+#how { background: var(--bg); }
+.steps-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; position: relative; margin-top: 48px; }
+.steps-grid::before { content: ''; position: absolute; top: 32px; left: calc(12.5%); right: calc(12.5%); height: 2px; background: var(--border); z-index: 0; }
+.step { text-align: center; padding: 0 16px; position: relative; z-index: 1; }
+.step-num { width: 64px; height: 64px; background: #fff; border: 2px solid var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--blue); box-shadow: 0 4px 16px rgba(26,86,219,0.12); }
+.step-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+.step-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* ─── TESTIMONIALS ─── */
+#testimonials { background: #fff; }
+.test-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px; }
+.test-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 24px; }
+.test-stars { color: var(--accent); font-size: 15px; margin-bottom: 14px; }
+.test-text { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+.test-author { display: flex; align-items: center; gap: 12px; }
+.test-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--blue-light); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: var(--blue); }
+.test-name { font-size: 14px; font-weight: 700; }
+.test-loc { font-size: 12px; color: var(--muted); }
+
+/* ─── CTA BANNER ─── */
+#cta-banner { background: linear-gradient(135deg,#1a2744,#1a56db); padding: 64px 5%; text-align: center; }
+#cta-banner h2 { font-family: 'DM Serif Display', serif; font-size: 38px; color: #fff; margin-bottom: 12px; }
+#cta-banner p { font-size: 16px; color: rgba(255,255,255,0.75); margin-bottom: 28px; }
+#cta-banner .hero-btns { justify-content: center; }
+.btn-white { background: #fff; color: var(--blue); padding: 14px 28px; border-radius: var(--radius-sm); font-size: 15px; font-weight: 700; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all .2s; text-decoration: none; display: inline-block; }
+.btn-white:hover { background: var(--blue-light); }
+.btn-outline-white { background: transparent; color: #fff; padding: 14px 28px; border-radius: var(--radius-sm); font-size: 15px; font-weight: 700; border: 2px solid rgba(255,255,255,0.6); cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all .2s; text-decoration: none; display: inline-block; }
+.btn-outline-white:hover { background: rgba(255,255,255,0.1); }
+
+@media(max-width:900px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+  .hero-3d-wrap { height: 320px; }
+  .services-grid { grid-template-columns: repeat(2,1fr); }
+  .steps-grid { grid-template-columns: repeat(2,1fr); gap: 28px; }
+  .steps-grid::before { display: none; }
+  .test-grid { grid-template-columns: 1fr; }
+  #hero h1 { font-size: 38px; }
+}
+@media(max-width:600px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr; }
+  #hero h1 { font-size: 32px; }
+  .hero-stats { gap: 20px; }
+}
+</style>
+</head>
+<body>
+<!-- NAV injected by components.js -->
+
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-content fade-in">
+      <div class="hero-badge"><span class="hero-badge-dot"></span> Available Now — Ludhiana, Punjab</div>
+      <h1>Fast &amp; Reliable<br>Plumbing<br><em>At Your Door</em></h1>
+      <p class="hero-sub">Licensed professionals for all your plumbing needs. Leak repair, installations &amp; 24/7 emergency response. Transparent pricing, zero surprises.</p>
+      <div class="hero-btns">
+        <a href="booking.html" class="btn-primary btn-lg">Book a Service</a>
+        <a href="tel:+911234567890" class="btn-secondary btn-lg">⚡ Emergency Call</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="hero-stat-num">5,000+</div><div class="hero-stat-label">Jobs Completed</div></div>
+        <div><div class="hero-stat-num">4.9★</div><div class="hero-stat-label">Customer Rating</div></div>
+        <div><div class="hero-stat-num">60 min</div><div class="hero-stat-label">Emergency Response</div></div>
+      </div>
+    </div>
+    <div class="hero-3d-wrap fade-in" style="transition-delay:.2s;">
+      <canvas id="hero-canvas"></canvas>
+      <div class="hero-card-float">
+        <div class="cf-label">Avg. Response Time</div>
+        <div class="cf-val">Under 60 min</div>
+        <div class="stars">★★★★★ 4.9/5</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services-preview">
+  <div class="section-inner">
+    <div style="text-align:center;margin-bottom:48px;" class="fade-in">
+      <div class="section-tag">What We Fix</div>
+      <h2 class="section-title">Complete Plumbing Solutions</h2>
+      <p class="section-sub" style="margin:0 auto;">From minor leaks to full bathroom installations — our certified plumbers handle it all.</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card fade-in"><div class="svc-icon-wrap">💧</div><div class="svc-title">Leak Detection &amp; Repair</div><div class="svc-desc">Advanced tools to find and fix hidden leaks before they cause major damage.</div><a class="svc-link" href="services.html">Learn more →</a></div>
+      <div class="svc-card fade-in" style="transition-delay:.1s;"><div class="svc-icon-wrap">🚿</div><div class="svc-title">Bathroom Installation</div><div class="svc-desc">Complete fitting of showers, basins, toilets and all sanitary ware.</div><a class="svc-link" href="services.html">Learn more →</a></div>
+      <div class="svc-card fade-in" style="transition-delay:.2s;"><div class="svc-icon-wrap">🔧</div><div class="svc-title">Pipe Replacement</div><div class="svc-desc">Old or corroded pipes replaced with modern materials. Lasting solution.</div><a class="svc-link" href="services.html">Learn more →</a></div>
+      <div class="svc-card fade-in" style="transition-delay:.3s;"><div class="svc-icon-wrap">🪣</div><div class="svc-title">Drain Cleaning</div><div class="svc-desc">High-pressure jetting to clear blockages in sinks, toilets, and main drains.</div><a class="svc-link" href="services.html">Learn more →</a></div>
+      <div class="svc-card fade-in" style="transition-delay:.4s;"><div class="svc-icon-wrap">🏠</div><div class="svc-title">Water Tank Cleaning</div><div class="svc-desc">Full sanitization of overhead and underground tanks. Health-safe water.</div><a class="svc-link" href="services.html">Learn more →</a></div>
+      <div class="svc-card svc-emergency fade-in" style="transition-delay:.5s;"><div class="svc-icon-wrap">⚡</div><div class="svc-title">Emergency — 24/7</div><div class="svc-desc">Burst pipes, overflows, no water? We dispatch in under 60 minutes, any time.</div><a class="svc-link" href="tel:+911234567890">Call Now →</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="section-inner">
+    <div class="fade-in" style="text-align:center;">
+      <div class="section-tag">Simple Process</div>
+      <h2 class="section-title">How It Works</h2>
+      <p class="section-sub" style="margin:0 auto;">Four simple steps to a resolved problem.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step fade-in"><div class="step-num">1</div><div class="step-title">Book Online</div><div class="step-desc">Fill in our quick form or call us. Tell us what's wrong and when works for you.</div></div>
+      <div class="step fade-in" style="transition-delay:.1s;"><div class="step-num">2</div><div class="step-title">Tech Assigned</div><div class="step-desc">We match you with the nearest certified plumber and send a confirmation.</div></div>
+      <div class="step fade-in" style="transition-delay:.2s;"><div class="step-num">3</div><div class="step-title">Work Done</div><div class="step-desc">Your plumber arrives on time, diagnoses and fixes the issue properly.</div></div>
+      <div class="step fade-in" style="transition-delay:.3s;"><div class="step-num">4</div><div class="step-title">Easy Payment</div><div class="step-desc">Pay only when satisfied. UPI, cash, or card — whatever works for you.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="section-inner">
+    <div class="fade-in" style="text-align:center;">
+      <div class="section-tag">Customer Reviews</div>
+      <h2 class="section-title">What Our Clients Say</h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card fade-in"><div class="test-stars">★★★★★</div><p class="test-text">"AquaFix responded to my burst pipe at 2am and had it fixed within an hour. Absolutely brilliant service."</p><div class="test-author"><div class="test-avatar">RS</div><div><div class="test-name">Rajveer Singh</div><div class="test-loc">Model Town, Ludhiana</div></div></div></div>
+      <div class="test-card fade-in" style="transition-delay:.1s;"><div class="test-stars">★★★★★</div><p class="test-text">"Got my entire bathroom fitted by their team. Professional, clean work, ahead of schedule. Very fair price."</p><div class="test-author"><div class="test-avatar">PK</div><div><div class="test-name">Priya Kapoor</div><div class="test-loc">Sarabha Nagar, Ludhiana</div></div></div></div>
+      <div class="test-card fade-in" style="transition-delay:.2s;"><div class="test-stars">★★★★☆</div><p class="test-text">"Water tank cleaning done thoroughly. The technician explained everything step by step. Booking was super easy."</p><div class="test-author"><div class="test-avatar">AM</div><div><div class="test-name">Amandeep Mehta</div><div class="test-loc">BRS Nagar, Ludhiana</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="cta-banner">
+  <div class="section-inner">
+    <h2 class="fade-in">Ready to Fix Your Plumbing?</h2>
+    <p class="fade-in">Book online in 2 minutes. Certified plumber at your door today.</p>
+    <div class="hero-btns fade-in">
+      <a href="booking.html" class="btn-white">Book a Service</a>
+      <a href="tel:+911234567890" class="btn-outline-white">⚡ Emergency Line</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER + WHATSAPP injected by components.js -->
+
+<script>
+(function() {
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas || typeof THREE === 'undefined') return;
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.shadowMap.enabled = true;
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+  camera.position.set(0, 2, 9);
+  camera.lookAt(0, 0, 0);
+  function resize() {
+    const w = canvas.parentElement.clientWidth, h = canvas.parentElement.clientHeight;
+    renderer.setSize(w, h); camera.aspect = w/h; camera.updateProjectionMatrix();
+  }
+  resize(); window.addEventListener('resize', resize);
+  scene.add(new THREE.AmbientLight(0xdbeafe, 0.8));
+  const sun = new THREE.DirectionalLight(0xffffff, 1.4);
+  sun.position.set(5,8,5); sun.castShadow = true; scene.add(sun);
+  const blueP = new THREE.PointLight(0x1a56db, 2, 12); blueP.position.set(-3,2,3); scene.add(blueP);
+  scene.add(new THREE.PointLight(0x3b7bff, 1.5, 10)).position.set(3,-1,4);
+  const pipeMat = new THREE.MeshStandardMaterial({color:0xd4e4f7,metalness:0.5,roughness:0.3});
+  const blueMat = new THREE.MeshStandardMaterial({color:0x1a56db,metalness:0.4,roughness:0.2,emissive:0x0a2a6e,emissiveIntensity:0.2});
+  const jointMat = new THREE.MeshStandardMaterial({color:0x93c5fd,metalness:0.7,roughness:0.15});
+  const accentMat = new THREE.MeshStandardMaterial({color:0xf59e0b,metalness:0.6,roughness:0.2,emissive:0x7a4a00,emissiveIntensity:0.3});
+  const group = new THREE.Group(); scene.add(group);
+  function pipe(x,y,z,len,axis){const g=new THREE.CylinderGeometry(0.12,0.12,len,16);const m=new THREE.Mesh(g,pipeMat);if(axis==='x')m.rotation.z=Math.PI/2;if(axis==='z')m.rotation.x=Math.PI/2;m.position.set(x,y,z);m.castShadow=true;group.add(m);}
+  function joint(x,y,z,r=0.2,mat=jointMat){const m=new THREE.Mesh(new THREE.SphereGeometry(r,16,16),mat);m.position.set(x,y,z);m.castShadow=true;group.add(m);}
+  function valve(x,y,z){const b=new THREE.Mesh(new THREE.CylinderGeometry(0.28,0.28,0.4,20),blueMat);b.position.set(x,y,z);b.castShadow=true;group.add(b);const h=new THREE.Mesh(new THREE.BoxGeometry(0.7,0.08,0.12),accentMat);h.position.set(x,y+0.3,z);group.add(h);const p=new THREE.Mesh(new THREE.CylinderGeometry(0.04,0.04,0.32,8),jointMat);p.position.set(x,y+0.16,z);group.add(p);}
+  pipe(0,0,0,4.5,'x'); pipe(1.2,1.2,0,2.5,'y'); pipe(-1.2,-1.0,0,2.2,'y'); pipe(0,0.8,0.5,2.0,'z');
+  joint(1.2,0,0,0.22); joint(-1.2,0,0,0.22); joint(0,0.8,0,0.22); joint(0,0,0,0.18);
+  valve(0.2,0,0); valve(-0.8,0.8,0);
+  const dropMat = new THREE.MeshStandardMaterial({color:0x1a56db,transparent:true,opacity:0.85,roughness:0.1});
+  const drops = [];
+  for(let i=0;i<5;i++){const d=new THREE.Mesh(new THREE.SphereGeometry(0.07+Math.random()*0.05,10,10),dropMat);d.position.set(-2+i*0.8,1.8+Math.random()*0.5,Math.random()*0.5-0.2);group.add(d);drops.push({mesh:d,baseY:d.position.y,speed:0.6+Math.random()*0.8,offset:Math.random()*Math.PI*2});}
+  let mx=0,my=0;
+  document.addEventListener('mousemove',e=>{mx=(e.clientX/window.innerWidth-0.5)*2;my=(e.clientY/window.innerHeight-0.5)*2;});
+  let t=0;
+  function animate(){requestAnimationFrame(animate);t+=0.016;group.rotation.y=t*0.25+mx*0.18;group.rotation.x=Math.sin(t*0.15)*0.12+my*0.08;group.position.y=Math.sin(t*0.4)*0.12;drops.forEach(d=>{d.mesh.position.y=d.baseY-((t*d.speed+d.offset)%2.5);if(d.mesh.position.y<-1.5)d.mesh.position.y=d.baseY;});blueP.intensity=1.8+Math.sin(t*1.5)*0.4;renderer.render(scene,camera);}
+  animate();
+})();
+</script>
+</body>
+</html>

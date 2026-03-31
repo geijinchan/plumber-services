@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Book a Service — AquaFix Plumbing</title>
+<meta name="description" content="Book a certified plumber in Ludhiana online. Same-day and emergency appointments available 24/7."/>
+<link rel="stylesheet" href="css/style.css"/>
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+<style>
+.booking-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 48px; align-items: start; margin-top: 48px; }
+.booking-sidebar {}
+.sidebar-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; margin-bottom: 20px; }
+.sidebar-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.sidebar-steps { display: flex; flex-direction: column; gap: 16px; }
+.sidebar-step { display: flex; align-items: flex-start; gap: 14px; }
+.s-step-num { width: 32px; height: 32px; background: var(--blue-light); color: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+.s-step-title { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.s-step-desc { font-size: 13px; color: var(--muted); }
+.trust-items { display: flex; flex-direction: column; gap: 12px; }
+.trust-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--muted); }
+.trust-icon { font-size: 18px; }
+
+/* FORM */
+.booking-form-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 40px 36px; }
+.booking-form-card h2 { font-family: 'DM Serif Display', serif; font-size: 28px; margin-bottom: 8px; }
+.booking-form-card .sub { font-size: 14px; color: var(--muted); margin-bottom: 32px; }
+.form-section-title { font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--blue); margin: 24px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+.form-group input,.form-group select,.form-group textarea { width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; font-family: 'DM Sans', sans-serif; color: var(--text); background: #fff; outline: none; transition: border-color .2s; }
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(26,86,219,0.08); }
+.form-group textarea { resize: vertical; min-height: 90px; }
+.required { color: var(--red); }
+.form-submit { width: 100%; padding: 15px; background: var(--blue); color: #fff; border: none; border-radius: var(--radius-sm); font-size: 16px; font-weight: 700; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background .2s; margin-top: 8px; letter-spacing: 0.3px; }
+.form-submit:hover { background: var(--blue-dark); }
+.form-note { font-size: 12px; color: var(--muted); text-align: center; margin-top: 12px; }
+
+/* Success state */
+.form-success-screen { display: none; text-align: center; padding: 48px 32px; }
+.success-circle { width: 80px; height: 80px; background: #dcfce7; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 36px; }
+.success-title { font-family: 'DM Serif Display', serif; font-size: 28px; margin-bottom: 8px; }
+.success-sub { font-size: 15px; color: var(--muted); margin-bottom: 24px; line-height: 1.7; }
+.success-ref { display: inline-block; background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 15px; padding: 8px 20px; border-radius: 20px; margin-bottom: 24px; }
+.wa-confirm-btn { display: inline-flex; align-items: center; gap: 10px; background: #25d366; color: #fff; padding: 14px 28px; border-radius: var(--radius-sm); font-size: 15px; font-weight: 700; text-decoration: none; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+
+/* Service selector cards */
+.service-selector { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 16px; }
+.svc-sel-card { border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 12px 10px; text-align: center; cursor: pointer; transition: all .2s; }
+.svc-sel-card:hover { border-color: var(--blue); background: var(--blue-light); }
+.svc-sel-card.selected { border-color: var(--blue); background: var(--blue-light); }
+.svc-sel-card.selected .svc-sel-name { color: var(--blue); font-weight: 700; }
+.svc-sel-icon { font-size: 22px; margin-bottom: 4px; }
+.svc-sel-name { font-size: 12px; font-weight: 500; color: var(--text); line-height: 1.3; }
+@media(max-width:900px){.booking-layout{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}.service-selector{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.booking-form-card{padding:24px 18px;}.service-selector{grid-template-columns:repeat(2,1fr);}}
+</style>
+</head>
+<body>
+
+<div class="page-header" style="padding-bottom:40px;">
+  <div class="section-tag">Book Online</div>
+  <h1>Schedule Your<br><em style="color:var(--blue);font-style:italic;">Plumbing Service</em></h1>
+  <p>Fill in the form below. We'll confirm your booking via WhatsApp within 15 minutes.</p>
+</div>
+
+<section style="background:var(--bg);padding-top:0;">
+  <div class="section-inner">
+    <div class="booking-layout">
+      <!-- SIDEBAR -->
+      <div class="booking-sidebar">
+        <div class="sidebar-card fade-in">
+          <h4>🗓️ How Booking Works</h4>
+          <div class="sidebar-steps">
+            <div class="sidebar-step"><div class="s-step-num">1</div><div><div class="s-step-title">Fill in the form</div><div class="s-step-desc">Tell us about your issue and preferred time</div></div></div>
+            <div class="sidebar-step"><div class="s-step-num">2</div><div><div class="s-step-title">Instant confirmation</div><div class="s-step-desc">Get a WhatsApp confirmation within 15 min</div></div></div>
+            <div class="sidebar-step"><div class="s-step-num">3</div><div><div class="s-step-title">Plumber arrives</div><div class="s-step-desc">Your certified plumber arrives at the chosen time</div></div></div>
+            <div class="sidebar-step"><div class="s-step-num">4</div><div><div class="s-step-title">Pay when done</div><div class="s-step-desc">Pay only after the job is completed to your satisfaction</div></div></div>
+          </div>
+        </div>
+        <div class="sidebar-card fade-in" style="transition-delay:.1s;">
+          <h4>✅ Why Choose AquaFix</h4>
+          <div class="trust-items">
+            <div class="trust-item"><span class="trust-icon">🎓</span> ITI-certified plumbers only</div>
+            <div class="trust-item"><span class="trust-icon">💰</span> Upfront quote — no hidden fees</div>
+            <div class="trust-item"><span class="trust-icon">🛡️</span> 30-day workmanship guarantee</div>
+            <div class="trust-item"><span class="trust-icon">💬</span> WhatsApp updates throughout</div>
+            <div class="trust-item"><span class="trust-icon">⚡</span> Emergency response in 60 min</div>
+            <div class="trust-item"><span class="trust-icon">📋</span> GST invoice on request</div>
+          </div>
+        </div>
+        <div class="sidebar-card fade-in" style="transition-delay:.2s;background:linear-gradient(135deg,#1a2744,#1a56db);border-color:transparent;">
+          <h4 style="color:#fff;">⚡ Emergency? Call Now</h4>
+          <p style="color:rgba(255,255,255,0.75);font-size:14px;margin-bottom:16px;">Burst pipe? No water? We respond in under 60 minutes, 24/7.</p>
+          <a href="tel:+911234567890" style="display:block;background:#fff;color:var(--blue);text-align:center;padding:12px;border-radius:8px;font-weight:700;font-size:15px;text-decoration:none;">📞 +91 12345 67890</a>
+        </div>
+      </div>
+
+      <!-- BOOKING FORM -->
+      <div class="booking-form-card fade-in" style="transition-delay:.15s;" id="booking-form-card">
+        <h2>Book a Plumber</h2>
+        <p class="sub">All fields marked <span class="required">*</span> are required</p>
+
+        <div class="form-section-title">Select Service</div>
+        <div class="service-selector" id="svc-selector">
+          <div class="svc-sel-card" onclick="selectService(this,'Leak Repair')"><div class="svc-sel-icon">💧</div><div class="svc-sel-name">Leak Repair</div></div>
+          <div class="svc-sel-card" onclick="selectService(this,'Bathroom Installation')"><div class="svc-sel-icon">🚿</div><div class="svc-sel-name">Bathroom Install</div></div>
+          <div class="svc-sel-card" onclick="selectService(this,'Pipe Replacement')"><div class="svc-sel-icon">🔧</div><div class="svc-sel-name">Pipe Replacement</div></div>
+          <div class="svc-sel-card" onclick="selectService(this,'Drain Cleaning')"><div class="svc-sel-icon">🪣</div><div class="svc-sel-name">Drain Cleaning</div></div>
+          <div class="svc-sel-card" onclick="selectService(this,'Tank Cleaning')"><div class="svc-sel-icon">🏠</div><div class="svc-sel-name">Tank Cleaning</div></div>
+          <div class="svc-sel-card" onclick="selectService(this,'Emergency — ASAP')" style="border-color:#fee2e2;background:#fff5f5;"><div class="svc-sel-icon">⚡</div><div class="svc-sel-name" style="color:#dc2626;">Emergency</div></div>
+        </div>
+        <input type="hidden" id="f-service" value=""/>
+
+        <div class="form-section-title">Your Details</div>
+        <div class="form-row">
+          <div class="form-group"><label>Full Name <span class="required">*</span></label><input type="text" id="f-name" placeholder="e.g. Gurpreet Singh"/></div>
+          <div class="form-group"><label>Phone Number <span class="required">*</span></label><input type="tel" id="f-phone" placeholder="+91 98765 43210"/></div>
+        </div>
+        <div class="form-group"><label>Full Address <span class="required">*</span></label><input type="text" id="f-address" placeholder="House no, Street, Locality, Ludhiana"/></div>
+
+        <div class="form-section-title">Schedule</div>
+        <div class="form-row">
+          <div class="form-group"><label>Preferred Date <span class="required">*</span></label><input type="date" id="f-date" min=""/></div>
+          <div class="form-group"><label>Preferred Time</label>
+            <select id="f-time">
+              <option value="">Any time</option>
+              <option>Morning (8am – 12pm)</option>
+              <option>Afternoon (12pm – 4pm)</option>
+              <option>Evening (4pm – 8pm)</option>
+              <option>ASAP — Emergency</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group"><label>Describe the Issue</label><textarea id="f-notes" placeholder="Tell us more about the problem — any details help us come prepared..."></textarea></div>
+
+        <button class="form-submit" onclick="submitBooking()">Confirm Booking →</button>
+        <p class="form-note">🔒 Your details are private and never shared. Confirmation sent via WhatsApp within 15 minutes.</p>
+      </div>
+
+      <!-- SUCCESS SCREEN (hidden) -->
+      <div class="form-success-screen booking-form-card" id="success-screen">
+        <div class="success-circle">✅</div>
+        <div class="success-title">Booking Confirmed!</div>
+        <p class="success-sub">Your booking has been received. We'll WhatsApp you within 15 minutes with your technician's name, photo, and ETA.</p>
+        <div class="success-ref">Booking Ref: #AFX-<span id="booking-ref">00000</span></div>
+        <br/>
+        <a class="wa-confirm-btn" id="wa-link" href="#" target="_blank">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+          Open WhatsApp Chat
+        </a>
+        <br/><br/>
+        <a href="index.html" style="font-size:14px;color:var(--muted);">← Back to Home</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+// Set min date to today
+document.getElementById('f-date').min = new Date().toISOString().split('T')[0];
+
+let selectedService = '';
+function selectService(el, name) {
+  document.querySelectorAll('.svc-sel-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedService = name;
+  document.getElementById('f-service').value = name;
+}
+
+function submitBooking() {
+  const name = document.getElementById('f-name').value.trim();
+  const phone = document.getElementById('f-phone').value.trim();
+  const address = document.getElementById('f-address').value.trim();
+  const date = document.getElementById('f-date').value;
+  if (!name) { alert('Please enter your name.'); return; }
+  if (!phone || !/^[+\d\s()-]{8,}$/.test(phone)) { alert('Please enter a valid phone number.'); return; }
+  if (!address) { alert('Please enter your address.'); return; }
+  if (!selectedService) { alert('Please select a service.'); return; }
+  if (!date) { alert('Please choose a preferred date.'); return; }
+
+  const ref = Math.floor(10000 + Math.random() * 90000);
+  document.getElementById('booking-ref').textContent = ref;
+  document.getElementById('booking-form-card').style.display = 'none';
+  document.getElementById('success-screen').style.display = 'block';
+
+  const time = document.getElementById('f-time').value || 'Any time';
+  const notes = document.getElementById('f-notes').value;
+  const msg = encodeURIComponent(
+    `Hi AquaFix! I just booked a service online.\n\nRef: #AFX-${ref}\nName: ${name}\nPhone: ${phone}\nService: ${selectedService}\nDate: ${date}\nTime: ${time}\nAddress: ${address}${notes ? '\nNotes: '+notes : ''}`
+  );
+  document.getElementById('wa-link').href = `https://wa.me/911234567890?text=${msg}`;
+}
+</script>
+</body>
+</html>

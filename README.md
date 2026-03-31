@@ -59,7 +59,7 @@ aquafix/
 | `pricing.html` | 3 packages, rates table, FAQ |
 | `booking.html` | Service selector, booking form, WhatsApp auto-message |
 | `contact.html` | Contact cards, message form, Google Maps, service areas, hours |
-
+ 
 ## 🔧 Tech Used
 
 - **Three.js r128** — 3D scene (loaded from CDN)

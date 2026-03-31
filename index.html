@@ -189,41 +189,155 @@
 (function() {
   const canvas = document.getElementById('hero-canvas');
   if (!canvas || typeof THREE === 'undefined') return;
+
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
   camera.position.set(0, 2, 9);
   camera.lookAt(0, 0, 0);
+
+  // Resize handler
   function resize() {
-    const w = canvas.parentElement.clientWidth, h = canvas.parentElement.clientHeight;
-    renderer.setSize(w, h); camera.aspect = w/h; camera.updateProjectionMatrix();
+    const w = canvas.parentElement.clientWidth;
+    const h = canvas.parentElement.clientHeight;
+    renderer.setSize(w, h);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
   }
-  resize(); window.addEventListener('resize', resize);
-  scene.add(new THREE.AmbientLight(0xdbeafe, 0.8));
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Lights
+  const ambient = new THREE.AmbientLight(0xdbeafe, 0.8);
+  scene.add(ambient);
   const sun = new THREE.DirectionalLight(0xffffff, 1.4);
-  sun.position.set(5,8,5); sun.castShadow = true; scene.add(sun);
-  const blueP = new THREE.PointLight(0x1a56db, 2, 12); blueP.position.set(-3,2,3); scene.add(blueP);
-  scene.add(new THREE.PointLight(0x3b7bff, 1.5, 10)).position.set(3,-1,4);
-  const pipeMat = new THREE.MeshStandardMaterial({color:0xd4e4f7,metalness:0.5,roughness:0.3});
-  const blueMat = new THREE.MeshStandardMaterial({color:0x1a56db,metalness:0.4,roughness:0.2,emissive:0x0a2a6e,emissiveIntensity:0.2});
-  const jointMat = new THREE.MeshStandardMaterial({color:0x93c5fd,metalness:0.7,roughness:0.15});
-  const accentMat = new THREE.MeshStandardMaterial({color:0xf59e0b,metalness:0.6,roughness:0.2,emissive:0x7a4a00,emissiveIntensity:0.3});
-  const group = new THREE.Group(); scene.add(group);
-  function pipe(x,y,z,len,axis){const g=new THREE.CylinderGeometry(0.12,0.12,len,16);const m=new THREE.Mesh(g,pipeMat);if(axis==='x')m.rotation.z=Math.PI/2;if(axis==='z')m.rotation.x=Math.PI/2;m.position.set(x,y,z);m.castShadow=true;group.add(m);}
-  function joint(x,y,z,r=0.2,mat=jointMat){const m=new THREE.Mesh(new THREE.SphereGeometry(r,16,16),mat);m.position.set(x,y,z);m.castShadow=true;group.add(m);}
-  function valve(x,y,z){const b=new THREE.Mesh(new THREE.CylinderGeometry(0.28,0.28,0.4,20),blueMat);b.position.set(x,y,z);b.castShadow=true;group.add(b);const h=new THREE.Mesh(new THREE.BoxGeometry(0.7,0.08,0.12),accentMat);h.position.set(x,y+0.3,z);group.add(h);const p=new THREE.Mesh(new THREE.CylinderGeometry(0.04,0.04,0.32,8),jointMat);p.position.set(x,y+0.16,z);group.add(p);}
-  pipe(0,0,0,4.5,'x'); pipe(1.2,1.2,0,2.5,'y'); pipe(-1.2,-1.0,0,2.2,'y'); pipe(0,0.8,0.5,2.0,'z');
-  joint(1.2,0,0,0.22); joint(-1.2,0,0,0.22); joint(0,0.8,0,0.22); joint(0,0,0,0.18);
-  valve(0.2,0,0); valve(-0.8,0.8,0);
-  const dropMat = new THREE.MeshStandardMaterial({color:0x1a56db,transparent:true,opacity:0.85,roughness:0.1});
+  sun.position.set(5, 8, 5);
+  sun.castShadow = true;
+  scene.add(sun);
+  const bluePoint = new THREE.PointLight(0x1a56db, 2, 12);
+  bluePoint.position.set(-3, 2, 3);
+  scene.add(bluePoint);
+  const accentPoint = new THREE.PointLight(0x3b7bff, 1.5, 10);
+  accentPoint.position.set(3, -1, 4);
+  scene.add(accentPoint);
+
+  // Materials
+  const pipeMat = new THREE.MeshStandardMaterial({ color: 0xd4e4f7, metalness: 0.5, roughness: 0.3 });
+  const blueMat = new THREE.MeshStandardMaterial({ color: 0x1a56db, metalness: 0.4, roughness: 0.2, emissive: 0x0a2a6e, emissiveIntensity: 0.2 });
+  const jointMat = new THREE.MeshStandardMaterial({ color: 0x93c5fd, metalness: 0.7, roughness: 0.15 });
+  const accentMat = new THREE.MeshStandardMaterial({ color: 0xf59e0b, metalness: 0.6, roughness: 0.2, emissive: 0x7a4a00, emissiveIntensity: 0.3 });
+
+  const group = new THREE.Group();
+  scene.add(group);
+
+  function addPipe(x, y, z, len, axis) {
+    const geo = new THREE.CylinderGeometry(0.12, 0.12, len, 16);
+    const mesh = new THREE.Mesh(geo, pipeMat);
+    if (axis === 'x') mesh.rotation.z = Math.PI / 2;
+    if (axis === 'z') mesh.rotation.x = Math.PI / 2;
+    mesh.position.set(x, y, z);
+    mesh.castShadow = true;
+    group.add(mesh);
+    return mesh;
+  }
+
+  function addJoint(x, y, z, r=0.2, mat=jointMat) {
+    const geo = new THREE.SphereGeometry(r, 16, 16);
+    const mesh = new THREE.Mesh(geo, mat);
+    mesh.position.set(x, y, z);
+    mesh.castShadow = true;
+    group.add(mesh);
+    return mesh;
+  }
+
+  function addValve(x, y, z) {
+    const body = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.28, 0.4, 20), blueMat);
+    body.position.set(x, y, z);
+    body.castShadow = true;
+    group.add(body);
+    const handle = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.08, 0.12), accentMat);
+    handle.position.set(x, y + 0.3, z);
+    group.add(handle);
+    const handlePin = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.32, 8), jointMat);
+    handlePin.position.set(x, y + 0.16, z);
+    group.add(handlePin);
+  }
+
+  function addElbow(x, y, z) {
+    const elbow = new THREE.Mesh(new THREE.TorusGeometry(0.22, 0.12, 12, 20, Math.PI / 2), pipeMat);
+    elbow.position.set(x, y, z);
+    group.add(elbow);
+  }
+
+  // Main horizontal pipe
+  addPipe(0, 0, 0, 4.5, 'x');
+  // Vertical pipe
+  addPipe(1.2, 1.2, 0, 2.5, 'y');
+  addPipe(-1.2, -1.0, 0, 2.2, 'y');
+  // Depth pipe
+  addPipe(0, 0.8, 0.5, 2.0, 'z');
+
+  // Joints
+  addJoint(1.2, 0, 0, 0.22);
+  addJoint(-1.2, 0, 0, 0.22);
+  addJoint(0, 0.8, 0, 0.22);
+  addJoint(0, 0, 0, 0.18, jointMat);
+
+  // Valves
+  addValve(0.2, 0, 0);
+  addValve(-0.8, 0.8, 0);
+
+  // Decorative water droplets
+  const dropMat = new THREE.MeshStandardMaterial({ color: 0x1a56db, transparent: true, opacity: 0.85, roughness: 0.1, metalness: 0.1 });
   const drops = [];
-  for(let i=0;i<5;i++){const d=new THREE.Mesh(new THREE.SphereGeometry(0.07+Math.random()*0.05,10,10),dropMat);d.position.set(-2+i*0.8,1.8+Math.random()*0.5,Math.random()*0.5-0.2);group.add(d);drops.push({mesh:d,baseY:d.position.y,speed:0.6+Math.random()*0.8,offset:Math.random()*Math.PI*2});}
-  let mx=0,my=0;
-  document.addEventListener('mousemove',e=>{mx=(e.clientX/window.innerWidth-0.5)*2;my=(e.clientY/window.innerHeight-0.5)*2;});
-  let t=0;
-  function animate(){requestAnimationFrame(animate);t+=0.016;group.rotation.y=t*0.25+mx*0.18;group.rotation.x=Math.sin(t*0.15)*0.12+my*0.08;group.position.y=Math.sin(t*0.4)*0.12;drops.forEach(d=>{d.mesh.position.y=d.baseY-((t*d.speed+d.offset)%2.5);if(d.mesh.position.y<-1.5)d.mesh.position.y=d.baseY;});blueP.intensity=1.8+Math.sin(t*1.5)*0.4;renderer.render(scene,camera);}
+  for (let i = 0; i < 5; i++) {
+    const drop = new THREE.Mesh(new THREE.SphereGeometry(0.07 + Math.random() * 0.05, 10, 10), dropMat);
+    drop.position.set(-2 + i * 0.8, 1.8 + Math.random() * 0.5, Math.random() * 0.5 - 0.2);
+    group.add(drop);
+    drops.push({ mesh: drop, baseY: drop.position.y, speed: 0.6 + Math.random() * 0.8, offset: Math.random() * Math.PI * 2 });
+  }
+
+  // Floor shadow plane
+  const floorGeo = new THREE.PlaneGeometry(12, 12);
+  const floorMat = new THREE.ShadowMaterial({ opacity: 0.08 });
+  const floor = new THREE.Mesh(floorGeo, floorMat);
+  floor.rotation.x = -Math.PI / 2;
+  floor.position.y = -2;
+  floor.receiveShadow = true;
+  scene.add(floor);
+
+  // Mouse parallax
+  let mx = 0, my = 0;
+  document.addEventListener('mousemove', (e) => {
+    mx = (e.clientX / window.innerWidth - 0.5) * 2;
+    my = (e.clientY / window.innerHeight - 0.5) * 2;
+  });
+
+  let t = 0;
+  function animate() {
+    requestAnimationFrame(animate);
+    t += 0.016;
+
+    // Auto-rotate + mouse parallax
+    group.rotation.y = t * 0.25 + mx * 0.18;
+    group.rotation.x = Math.sin(t * 0.15) * 0.12 + my * 0.08;
+    group.position.y = Math.sin(t * 0.4) * 0.12;
+
+    // Animate water drops (falling)
+    drops.forEach(d => {
+      d.mesh.position.y = d.baseY - ((t * d.speed + d.offset) % 2.5);
+      if (d.mesh.position.y < -1.5) d.mesh.position.y = d.baseY;
+    });
+
+    // Pulsing blue point light
+    bluePoint.intensity = 1.8 + Math.sin(t * 1.5) * 0.4;
+
+    renderer.render(scene, camera);
+  }
   animate();
 })();
 </script>

@@ -127,7 +127,7 @@ export default function Booking() {
                     />
 
                     <div className="space-y-6">
-                      <FormLabel className="text-base font-bold text-slate-900 block">3. Your Details</FormLabel>
+                      <p className="text-base font-bold text-slate-900">3. Your Details</p>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <FormField

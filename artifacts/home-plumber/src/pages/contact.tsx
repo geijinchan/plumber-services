@@ -25,8 +25,8 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-sm text-slate-500 font-medium uppercase tracking-wider mb-1">Call Us (24/7)</p>
-                  <a href="tel:+919914148836" className="text-2xl font-bold text-slate-900 hover:text-primary transition-colors">
-                    +91 9914148836
+                  <a href="tel:+9112345678" className="text-2xl font-bold text-slate-900 hover:text-primary transition-colors">
+                    +91 12345678
                   </a>
                 </div>
               </CardContent>
@@ -39,7 +39,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-sm text-slate-500 font-medium uppercase tracking-wider mb-1">WhatsApp</p>
-                  <a href="https://wa.me/919914148836" target="_blank" rel="noopener noreferrer" className="text-xl font-bold text-slate-900 hover:text-[#25D366] transition-colors">
+                  <a href="https://wa.me/9112345678" target="_blank" rel="noopener noreferrer" className="text-xl font-bold text-slate-900 hover:text-[#25D366] transition-colors">
                     Chat with our team
                   </a>
                 </div>

@@ -65,7 +65,7 @@ export default function Pricing() {
             </CardContent>
             <CardFooter className="pt-8">
               <Button asChild className="w-full text-lg h-12 shadow-lg">
-                <a href="https://wa.me/919914148836?text=Hi%2C+I'm+interested+in+the+Home+Care+Plan" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/9112345678?text=Hi%2C+I'm+interested+in+the+Home+Care+Plan" target="_blank" rel="noopener noreferrer">
                   Subscribe via WhatsApp
                 </a>
               </Button>

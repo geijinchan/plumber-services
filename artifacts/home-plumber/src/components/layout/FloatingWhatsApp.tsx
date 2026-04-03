@@ -7,7 +7,7 @@ export default function FloatingWhatsApp() {
       <Tooltip>
         <TooltipTrigger asChild>
           <a
-            href="https://wa.me/919914148836"
+            href="https://wa.me/9112345678"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center w-14 h-14 bg-[#25D366] text-white rounded-full shadow-lg hover:scale-110 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2"

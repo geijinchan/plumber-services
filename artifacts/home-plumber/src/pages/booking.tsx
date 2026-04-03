@@ -48,7 +48,7 @@ export default function Booking() {
     // Format text for WhatsApp
     const text = `Hi, I want to book a plumber.%0A*Service:* ${values.service}%0A*Date/Time:* ${values.date}%0A*Name:* ${values.name}%0A*Phone:* ${values.phone}%0A*Address:* ${values.address}`;
     
-    const whatsappUrl = `https://wa.me/919914148836?text=${text}`;
+    const whatsappUrl = `https://wa.me/9112345678?text=${text}`;
     
     // Small delay to show button loading state before redirect
     setTimeout(() => {

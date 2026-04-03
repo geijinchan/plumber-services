@@ -60,11 +60,11 @@ export default function Navbar() {
           {/* Desktop CTA — only visible on md+ */}
           <div className="hidden md:flex items-center gap-3">
             <a
-              href="tel:+919914148836"
+              href="tel:+9112345678"
               className="flex items-center gap-2 text-sm font-semibold text-gray-800 hover:text-blue-600 transition-colors"
             >
               <Phone className="w-4 h-4 text-blue-600" />
-              +91 9914148836
+              +91 12345678
             </a>
             <Button asChild size="sm">
               <Link href="/booking">Book a Plumber</Link>
@@ -109,13 +109,13 @@ export default function Navbar() {
                 <Link href="/booking">Book a Plumber Now</Link>
               </Button>
               <a
-                href="tel:+919914148836"
+                href="tel:+9112345678"
                 className="flex items-center justify-center gap-3 w-full h-14 rounded-lg border-2 border-gray-200 text-gray-800 font-semibold text-base hover:border-blue-300 transition-colors"
                 onClick={() => setIsOpen(false)}
                 data-testid="link-nav-call"
               >
                 <Phone className="w-5 h-5 text-blue-600" />
-                +91 9914148836
+                +91 12345678
               </a>
             </div>
           </div>

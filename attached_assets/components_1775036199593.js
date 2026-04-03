@@ -23,7 +23,7 @@ function injectNav() {
       <div class="nav-cta">
         <a class="nav-call" href="tel:+911234567890">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.1 1.18 2 2 0 012.08.01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.3 7.74a16 16 0 006 6l1.06-1.06a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
-          +91 9914148836
+          +91 12345678
         </a>
         <a href="booking.html" class="nav-book-btn">Book a Plumber</a>
       </div>
@@ -101,8 +101,8 @@ function injectFooter() {
         <div class="footer-col footer-contact-col">
           <h4>Get In Touch</h4>
           <ul>
-            <li><a href="tel:+919914148836">📞 +91 9914148836</a></li>
-            <li><a href="https://wa.me/919914148836" target="_blank">💬 WhatsApp Us</a></li>
+            <li><a href="tel:+9112345678">📞 +91 12345678</a></li>
+            <li><a href="https://wa.me/9112345678" target="_blank">💬 WhatsApp Us</a></li>
             <li><a href="mailto:hello@homeplumber.in">✉️ hello@homeplumber.in</a></li>
             <li><a href="contact.html">📍 Mohali, Punjab</a></li>
           </ul>

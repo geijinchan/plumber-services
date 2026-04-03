@@ -44,7 +44,7 @@ export default function Home() {
                 <Link href="/booking">Book a Plumber</Link>
               </Button>
               <Button asChild size="xl" variant="outline" className="w-full sm:w-auto h-14 px-8 text-lg rounded-full bg-white flex items-center gap-2">
-                <a href="https://wa.me/9112345678" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/919914148836" target="_blank" rel="noopener noreferrer">
                   <SiWhatsapp className="w-5 h-5 text-green-600" />
                   WhatsApp Us
                 </a>
@@ -169,6 +169,17 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Google Reviews */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-3">What Our Customers Say</h2>
+            <p className="text-slate-600">Real reviews from real customers in Mohali — straight from Google.</p>
+          </div>
+          <div className="elfsight-app-ce9ca789-5404-4735-ab92-0f9cb23145a3" data-elfsight-app-lazy></div>
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4">
@@ -181,9 +192,9 @@ export default function Home() {
               <p className="text-xl text-slate-300">Don't let a small leak turn into a big disaster. Call the experts.</p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
                 <Button asChild size="xl" className="w-full sm:w-auto h-14 px-8 text-lg rounded-full">
-                  <a href="tel:+9112345678">
+                  <a href="tel:+919914148836">
                     <Phone className="w-5 h-5 mr-2" />
-                    Call +91 12345678
+                    Call +91 9914148836
                   </a>
                 </Button>
                 <Button asChild size="xl" variant="outline" className="w-full sm:w-auto h-14 px-8 text-lg rounded-full bg-transparent border-slate-600 text-white hover:bg-slate-800 hover:text-white">
